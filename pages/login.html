@@ -11,22 +11,112 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-md">
             <div class="text-center">
-                <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-                    Welcome to HospoHub
+                <a href="../index.html">
+                    <h1 class="text-3xl font-semibold text-indigo-600">HospoHub</h1>
+                </a>
+                <h2 class="mt-6 text-3xl font-extrabold text-gray-900" id="auth-title">
+                    Welcome Back
                 </h2>
-                <p class="mt-2 text-sm text-gray-600" id="login-subtitle">
+                <p class="mt-2 text-sm text-gray-600" id="auth-subtitle">
                     Sign in to your account
                 </p>
             </div>
             <form class="mt-8 space-y-6" id="auth-form">
-                <!-- Form fields will go here -->
+                <input type="hidden" name="auth-type" id="auth-type" value="login">
+                <div class="rounded-md shadow-sm space-y-4">
+                    <!-- Email Address -->
+                    <div>
+                        <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
+                        <input id="email-address" name="email" type="email" autocomplete="email" required 
+                            class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md 
+                            shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 
+                            focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input id="password" name="password" type="password" autocomplete="current-password" required 
+                            class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md 
+                            shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 
+                            focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    
+                    <!-- Registration fields (hidden by default) -->
+                    <div id="registration-fields" class="hidden space-y-4">
+                        <!-- Confirm Password -->
+                        <div>
+                            <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                            <input id="confirm-password" name="confirm-password" type="password" 
+                                class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md 
+                                shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 
+                                focus:border-indigo-500 sm:text-sm">
+                        </div>
+                        
+                        <!-- School/Organization Name -->
+                        <div>
+                            <label for="organization" class="block text-sm font-medium text-gray-700">School/Organization Name</label>
+                            <input id="organization" name="organization" type="text" 
+                                class="mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md 
+                                shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 
+                                focus:border-indigo-500 sm:text-sm">
+                        </div>
+                        
+                        <!-- Role Selection -->
+                        <div>
+                            <label for="role" class="block text-sm font-medium text-gray-700">Your Role</label>
+                            <select id="role" name="role" 
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 
+                                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm 
+                                rounded-md">
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Administrator</option>
+                                <option value="staff">Kitchen Staff</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remember me checkbox -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" 
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500" id="forgot-password">
+                            Forgot your password?
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
                 <div>
-                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <button type="submit" id="submit-button" 
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent 
+                        text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 
+                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Sign in
                     </button>
                 </div>
             </form>
+            
+            <!-- Toggle between login and register -->
             <div class="text-center mt-4">
+                <p class="text-sm text-gray-600">
+                    <span id="toggle-text">Don't have an account?</span>
+                    <a href="#" id="toggle-auth" class="ml-1 font-medium text-indigo-600 hover:text-indigo-500">
+                        Sign up now
+                    </a>
+                </p>
+            </div>
+            
+            <!-- Back to Home -->
+            <div class="text-center mt-2">
                 <a href="../index.html" class="text-sm text-indigo-600 hover:text-indigo-500">
                     Back to Home
                 </a>

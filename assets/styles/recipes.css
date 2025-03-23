@@ -1,0 +1,312 @@
+/* Enhanced recipes.css - Styling for the recipes page */
+
+/* Fix for image aspect ratio */
+.relative.pb-2\/3 {
+    padding-bottom: 66.66%; /* 2/3 ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.relative.pb-3\/4 {
+    padding-bottom: 75%; /* 3/4 ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.relative.pb-2\/3 img,
+.relative.pb-3\/4 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Recipe card enhancements */
+.recipe-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.recipe-card > div:last-child {
+    margin-top: auto;
+}
+
+/* Recipe card tags styling */
+.recipe-card span.rounded-full {
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* Button hover effects */
+.recipe-card button svg {
+    transition: transform 0.2s;
+}
+
+.recipe-card button:hover svg {
+    transform: scale(1.2);
+}
+
+/* Modal enhancements */
+.modal-open {
+    overflow: hidden;
+}
+
+#add-recipe-modal, 
+#view-recipe-modal {
+    transition: opacity 0.3s ease;
+}
+
+#add-recipe-modal:not(.hidden), 
+#view-recipe-modal:not(.hidden) {
+    opacity: 1;
+}
+
+/* Recipe detail view styling */
+.recipe-detail-view h3 {
+    color: #4F46E5;
+}
+
+.recipe-detail-view img {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Ingredients and instructions styling */
+#view-recipe-ingredients .flex.items-start {
+    margin-bottom: 0.5rem;
+}
+
+#view-recipe-ingredients .flex.items-start:hover {
+    background-color: #F9FAFB;
+}
+
+#view-recipe-ingredients input[type="checkbox"] {
+    cursor: pointer;
+}
+
+#view-recipe-ingredients input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
+    color: #9CA3AF;
+}
+
+#view-recipe-instructions li {
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+/* Servings adjustment styling */
+#decrease-servings, #increase-servings {
+    transition: background-color 0.2s;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#decrease-servings:hover, #increase-servings:hover {
+    background-color: #E5E7EB;
+}
+
+/* Nutritional info toggle animation */
+#nutritional-info-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Recipe import section styling */
+#recipe-import-section {
+    border-left: 4px solid #4F46E5;
+}
+
+#recipe-processing .animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#processing-progress {
+    transition: width 0.5s ease;
+}
+
+/* Form field focus styles */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* Print styles */
+@media print {
+    header, footer, #add-recipe-button, .bg-gray-50.px-4.py-3 {
+        display: none;
+    }
+    
+    .recipe-detail-view {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+    }
+    
+    .recipe-detail-view img {
+        max-width: 3in;
+        max-height: 3in;
+    }
+    
+    #view-recipe-ingredients input[type="checkbox"] {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .recipe-card {
+        margin-bottom: 1rem;
+    }
+    
+    #view-recipe-image {
+        height: auto;
+        max-height: 200px;
+    }
+    
+    .recipe-detail-view .grid.grid-cols-1.md\:grid-cols-3 {
+        display: block;
+    }
+    
+    .recipe-detail-view .md\:col-span-1,
+    .recipe-detail-view .md\:col-span-2 {
+        margin-bottom: 1.5rem;
+    }
+    
+    #recipe-import-section,
+    #recipe-manual-entry {
+        padding: 1rem;
+    }
+}
+
+/* Dietary tags styling */
+.recipe-detail-view #view-recipe-dietary-tags span {
+    font-weight: 500;
+}
+
+/* Tags styling */
+#view-recipe-tags span {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Animation for recipe scaling */
+#view-recipe-servings {
+    transition: all 0.2s ease;
+}
+
+#view-recipe-servings.scaling {
+    transform: scale(1.2);
+    color: #4F46E5;
+}
+
+/* File upload styling */
+#recipe-file-upload {
+    cursor: pointer;
+}
+
+/* Recipe form validation */
+input:invalid, textarea:invalid, select:invalid {
+    border-color: #EF4444;
+}
+
+.error-message {
+    color: #EF4444;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+/* Filter and search styling */
+#search {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0.75rem center;
+    background-size: 1rem;
+    padding-left: 2.5rem;
+}
+
+/* Add tag/category selection */
+.tag-selection span {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag-selection span:hover {
+    background-color: #E0E7FF;
+}
+
+.tag-selection span.selected {
+    background-color: #4F46E5;
+    color: white;
+}
+
+/* Batch selection styles */
+.recipe-card.selected {
+    border: 2px solid #4F46E5;
+}
+
+.batch-actions {
+    transition: all 0.3s ease;
+    transform: translateY(100%);
+}
+
+.batch-actions.visible {
+    transform: translateY(0);
+}
+
+/* Visual feedback for hover actions */
+.action-button {
+    position: relative;
+}
+
+.action-button::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.25rem 0.5rem;
+    background-color: #1F2937;
+    color: white;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.action-button:hover::after {
+    opacity: 1;
+}
